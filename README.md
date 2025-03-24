@@ -1,46 +1,185 @@
-# Getting Started with Create React App
+This is a Todo List Frontend Application built using React (with TypeScript) and CSS for styling. The application allows users to:
+a) Add tasks by clicking a "+" button.
+b) Mark tasks as completed using checkboxes.
+c) Track the number of completed tasks.
+d) Delete or edit tasks.
+e) View a clean and attractive UI.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features:
 
-## Available Scripts
+a) Add Tasks:
+Click the "+" button to add a new task.
+Enter the task name in the input field and click "Save".
 
-In the project directory, you can run:
+b) Mark Tasks as Completed:
+Click the checkbox next to a task to mark it as completed.
+The completed task count updates dynamically.
 
-### `npm start`
+c) Delete Tasks:
+Click the trash icon to delete a task.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+d) Edit Tasks:
+Click the edit icon to update the task name.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+Technologies Used :
+React: JavaScript library for building the user interface.
+TypeScript: Adds static typing to JavaScript for better code quality.
+CSS: Used for styling the application.
+Font Awesome: Icons for delete, edit, and checkmark.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Steps to Build the Project:
 
-### `npm run build`
+1. Set Up the Project
+Use create-react-app with the TypeScript template:
+npx create-react-app todo-list --template typescript
+cd todo-list
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install Font Awesome for icons:
+npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Directory Structure :
+todo-list/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── TodoList.tsx
+│   │   ├── Task.tsx
+│   ├── styles/
+│   │   ├── App.css
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── react-app-env.d.ts
+├── package.json
+├── tsconfig.json
+└── README.md
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+3. Code Files:
+TodoList.tsx: Main component for managing tasks and state.
+Task.tsx: Component for individual tasks (checkbox, edit, delete).
+App.css: Styles for the Todo List.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Run the Application:
+Start the development server: npm start
+Open the app in your browser at http://localhost:3000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+UNIT TESTING USING JEST : 
 
-## Learn More
+Technologies Used :
+Jest: JavaScript testing framework.
+React Testing Library: Library for testing React components.
+TypeScript: Adds static typing to JavaScript for better code quality.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Steps to Set Up Unit Testing :
+1. Install Required Dependencies
+Jest and React Testing Library are typically included with Create React App. If not, install them:
+npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/user-event jest
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Update package.json for Jest Configuration
+Ensure your package.json has the following Jest configuration:
+"jest": {
+  "testEnvironment": "jsdom",
+  "setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"]
+}
+
+3. Create a setupTests.ts File
+Create a setupTests.ts file in the src directory to import @testing-library/jest-dom:
+
+typescript
+// src/setupTests.ts
+import '@testing-library/jest-dom';
+
+4. Directory Structure for Tests
+Organize your tests in a __tests__ folder inside the components directory:
+
+todo-list/
+├── src/
+│   ├── components/
+│   │   ├── __tests__/
+│   │   │   ├── TodoList.test.tsx
+│   │   │   └── Task.test.tsx
+│   │   ├── TodoList.tsx
+│   │   ├── Task.tsx
+│   │   └── Navbar.tsx
+│   ├── styles/
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── setupTests.ts
+│   └── react-app-env.d.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+
+Run the tests using the following command: npm test
+
+Key Test Cases : 
+
+For Task Component :
+Renders Task Text: Verify the task text is displayed.
+Toggles Completion: Verify the checkbox toggles task completion.
+Enters Edit Mode: Verify the task enters edit mode on edit icon click.
+Deletes Task: Verify the task is deleted on delete icon click.
+
+For TodoList Component :
+Renders Initial State: Verify no tasks are displayed initially.
+Adds a New Task: Verify a new task is added.
+Marks Task as Completed: Verify the task is marked as completed.
+Deletes a Task: Verify the task is deleted.
+
+
+
+END-TO-END TESTING USING Playwright :  Playwright is a powerful tool for testing web applications in real browsers, ensuring your app works as expected across different environments.
+
+Steps to Set Up and Run E2E Tests :
+1) Install Playwright as a development dependency in your project:
+npm install --save-dev @playwright/test
+2) After installation, initialize Playwright to set up the required browsers and configuration:
+npx playwright install
+3. Create a Playwright Configuration File
+Playwright automatically generates a configuration file (playwright.config.ts) in the root of your project.
+4) Create an e2e-tests directory in the root of your project. This is where all your E2E tests will reside.
+
+todo-list/
+├── e2e-tests/
+│   ├── todo-list.spec.ts
+├── src/
+├── package.json
+├── playwright.config.ts
+└── README.md
+5. Write E2E Tests
+Create a test file (todo-list.spec.ts) in the e2e-tests directory.
+6) Before running the tests, start your Todo List application using npm start
+Ensure your app is running on http://localhost:3000.
+7) Execute the Playwright tests using the following command: npx playwright test
+This will run all the tests in the e2e-tests directory.
+8) After running the tests, you can view the results in the terminal. Playwright also generates an HTML report. To view the report, run:  npx playwright show-report
+This will open a detailed HTML report in your browser.
+
+
+Key Test Cases :
+1) Add a Task:
+Verify that a new task is added to the list.
+
+2) Mark a Task as Completed:
+Verify that the task is marked as completed and the completed task count updates.
+
+3) Delete a Task:
+Verify that the task is deleted from the list.
+
+4) Edit a Task:
+Verify that the task content is updated.
+
+
+
+
+
+
+
+
+
+
+
