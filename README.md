@@ -67,6 +67,8 @@ Start the development server: npm start
 Open the app in your browser at http://localhost:3000.
 
 
+
+
 UNIT TESTING USING JEST : 
 
 Technologies Used :
@@ -129,6 +131,9 @@ Renders Initial State: Verify no tasks are displayed initially.
 Adds a New Task: Verify a new task is added.
 Marks Task as Completed: Verify the task is marked as completed.
 Deletes a Task: Verify the task is deleted.
+
+
+
 
 
 
